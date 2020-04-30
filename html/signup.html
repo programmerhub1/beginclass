@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+	body{
+		overflow-x: hidden;
+		overflow-y: auto;
+		user-select:none;
+		font-family: 'Open Sans';
+	}
+	.left{
+		width: 40%;
+		float:left;
+		height:100vh;
+		position: fixed;
+		background:white; 
+	}
+	.right{
+		width:10%;
+		float:left;
+		height:auto;
+		min-height: 100vh; 
+		background:#B2DFDB; 
+	}
+	.text{
+		position: relative;
+		height: 40%;
+	}
+	#logintxth1{
+		font-family: 'Roboto';
+	}
+	.logintxth2{
+		color:#898989;
+		font-family: 'Open Sans';
+	}
+	#l_img{
+		width:90%;
+		height:auto;
+		top: 40%;
+		left: 2%;
+		position: relative;
+	}
+	#form{
+		position: relative;
+		height: auto;
+	}
+	#righthellow{
+		font-weight: 600;
+		background: linear-gradient(to right, #5C6BC0 0%, #33315d 70%);
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+	}
+	#rightptag{
+		color: #000;
+	}
+	#gobtn{
+		background: #33315d;
+		border:none;
+		color: white;
+		letter-spacing: 1px;
+		border-radius: 2px;
+		transition: .2s;
+	}
+	#gobtn:hover{
+		background: none;
+		border:2px solid #33315d;
+		color: #33315d;
+	}
+	
+	#typepors{
+		width: 100%;
+		float: right;
+		font-size: 22px;
+	}
+	#typepors >input {
+		width:15px;
+		height: 15px;
+	}
+	#pagination{
+		width: 100%;
+		padding-left:7.5vw;
+	}
+	.circl{
+		width: 30px;
+		height: 30px;
+		color: #fff;
+		border-radius: 50%;
+		float: left;
+		padding: 5px 14px 5px 10px;
+		margin-left: 50px;
+	}
+	#c1{
+		background-color: #33315d;
+	}
+	#c2,#c3{
+		background-color: none;
+		color:#33315d;
+	}
+
+			/* Extra small devices (phones, 600px and down) */
+		@media only screen and (max-width: 600px) {
+			body{
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+			.left{
+				margin-top: -50px;
+				width: 100%;
+				height: auto;
+				position:relative;
+			}
+			.left > img{
+				margin-top: 5%;
+			}
+			.right{
+				border-radius: 30px 30px 0px 0px; 
+				border:2px solid white;
+				width: 100%;
+				position: relative;
+				padding-top: 10px;
+				height: auto;
+			}
+			#righthellow , #rightptag{
+				text-align: center;
+			}
+			.form-control-lg{
+				width: 90%;
+			}
+			#typepors{
+				margin-left:10px;
+				position: absolute; 
+			}
+			.form-lg{
+				margin-left: 5%;				
+			}
+			#gobtn{
+				width: 30%;
+				height: 40px;
+				font-size: 1rem;
+				margin-top: -50px;
+				margin-left: 35vw;
+				}
+			#forgotp{
+				margin-top: -50px;
+				font-size: .5rem;
+				font-weight: 5 00;
+			}
+			.topformobile{
+				margin-top: -100px;
+			}
+			#pagination{
+				padding-left:10vw;
+			}
+
+		}
+
+		/* Small devices (portrait tablets and large phones, 600px and up) */
+		@media only screen and (min-width: 600px) {}
+
+		/* Medium devices (landscape tablets, 768px and up) */
+		@media only screen and (min-width: 600px) {
+				.right{
+					width: 100%;
+					padding-left: 50vw;
+					padding-top: 15vh;
+				}
+
+			#logintxth1{
+					letter-spacing: 0.5px;
+					font-weight: 50;
+					font-size: 4vw;
+				}
+			.logintxth2{
+					font-size: 1.2vw;
+				}
+				#form{
+					width: 38vw;
+				}
+				#gobtn{
+					width: 40%;
+					height: 55px;
+					margin-left: 35%;
+					font-size: 1.8rem;
+				}
+		}
+
+		/* Large devices (laptops/desktops, 992px and up) */
+		@media only screen and (min-width: 992px) {	
+			
+				.right{
+					width: 100%;
+					padding-left: 50vw;
+					padding-top: 15vh;
+				}
+
+			#logintxth1{
+					letter-spacing: 0.5px;
+					font-weight: 50;
+					font-size: 4vw;
+				}
+			.logintxth2{
+					font-size: 1.2vw;
+				}
+				#form{
+					width: 38vw;
+				}
+				#gobtn{
+					width: 40%;
+					height: 55px;
+					margin-left: 35%;
+					font-size: 1.8rem;
+				}
+				#pagination{
+ 
+            	}
+		}
+
+		/* Extra large devices (large laptops and desktops, 1200px and up) */
+		@media only screen and (min-width: 1200px) {
+				.left{
+					width: 30%;
+				}
+				.right{
+					width: 100%;
+					overflow: auto;
+					padding-left: 50vw;
+					padding-top: 10vh;
+				}
+				#logintxth1{
+					letter-spacing: 0.5px;
+					font-weight: 1000;
+					font-size: 4vw;
+				}
+				.logintxth2{
+					font-size: 1.1vw;
+				}
+				#form{
+					width: 30vw;
+				}
+				#gobtn{
+					width: 37%;
+					height: 55px;
+					margin-left: 35%;
+					font-size: 1.8rem;
+				}
+				#pagination{
+ 
+            	}
+		}
+
+
+		.md-form input[type=email]{
+			box-shadow: 0 1px 0 0 #000 !important;
+			border-bottom: 1px solid #000 !important;
+		}
+		.md-form input[type=text]{
+			box-shadow: 0 1px 0 0 #000 !important;
+			border-bottom: 1px solid #000 !important;
+		}
+		.md-form input[type=password]{
+			box-shadow: 0 1px 0 0 #000 !important;
+			border-bottom: 1px solid #000 !important;
+		}
+		.md-form input[type=number]{
+			box-shadow: 0 1px 0 0 #000 !important;
+			border-bottom: 1px solid #000 !important;
+		}
+		.md-form input[type=text]:focus{
+			box-shadow: 0 1px 0 0 #33315d !important;
+			border-bottom: 1px solid #33315d !important;
+		}
+		.md-form input[type=password]:focus{
+			box-shadow: 0 1px 0 0 #33315d !important;
+			border-bottom: 1px solid #33315d !important;
+		}
+		.md-form input[type=text]:focus + #enroll,
+		.md-form input[type=text]:focus + #name,
+		.md-form input[type=number]:focus + #number,
+		.md-form input[type=password]:focus + #ps1,
+		.md-form input[type=password]:focus + #ps2
+		 {
+			color:#33315d; 
+		}
+		.strike {
+	        display: block;
+	        text-align: center;
+	        overflow: hidden;
+	        white-space: nowrap; 
+	    }
+
+	    .strike > span {
+	        position: relative;
+	        display: inline-block;
+	        color: black;
+
+	    }
+		
+	    .strike > span:before,
+	    .strike > span:after {
+	        content: "";
+	        position: absolute;
+	        top: 50%;
+	        width: 9999px;
+	        height: 1px;
+	        background: grey;
+	    }
+
+	    .strike > span:before {
+	        right: 100%;
+	        margin-right: 15px;
+	    }
+
+	    .strike > span:after {
+	        left: 100%;
+	        margin-left: 15px;
+	    }
+</style>
+<body>
+<div class="left">
+	<div class="text">
+		<h1>&nbsp;</h1>
+		<center><h1 id="logintxth1" style >Sign Up</h1></center>
+		<br/>
+		<center><p class="logintxth2">Enter Your Personal Details <br/>And Start Journey  With Us.</p></center>
+	</div>
+	<img  src="../img/login1.png" id="l_img">
+</div>	
+<div class="right">
+	
+	<div id="form">	
+		<b><h1 id="righthellow">Create Account :) </h1></b>
+		<br/>
+		<form>
+		<div class="page1">
+			<h4 id="rightptag">Enter Your Collage Details :</h4>
+			<br/>
+			<br/>
+			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="clg"></select>
+			<br/>
+			<br/>	
+			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="dept">
+			    <option selected value="">Choose Your Department Name</option>
+			    <option>Computer Engineering</option>
+			    <option>Civil Engineering</option>
+			    <option>Mechanical Engineering</option>
+			</select>
+			<br/>
+			<br/>
+			<div id="typepors">	
+			<h5 style="float: left; margin-top: 4px;">Type:&nbsp;&nbsp;</h5>
+				<input type="radio" checked id="contactChoice1" name="type" value="student">
+			    <label for="contactChoice1">Student</label>
+			    <input type="radio" id="contactChoice2" name="type" value="professor">
+			    <label for="contactChoice2">Professor</label>
+			</div>
+			<br/>
+			<div class="md-form form-lg">
+			  <input type="text" id="inputLGEx1" class="form-control form-control-lg" name="enrollno">
+			  <label for="inputLGEx1" id="enroll">Enrollment&nbsp;No.</label>
+			</div>
+			<br/>
+			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="cyear">
+			    <option selected value="">Collage Current Year</option>
+			    <option value="1">1</option>
+			    <option value="2">2</option>
+			    <option value="3">3</option>
+			    <option value="4">4</option>
+			</select>
+			<br/>
+			<br/>
+		</div>
+
+		<div class="page2">
+			<h4 id="rightptag">Enter Your Personal Details :</h4>
+			<br/>
+			<div class="md-form form-lg">
+			  <input type="text" id="inputLGEx11" class="form-control form-control-lg" name="fnm">
+			  <label for="inputLGEx11" id="name">First Name</label>
+			</div>
+
+			<div class="md-form form-lg">
+			  <input type="text" id="inputLGEx22" class="form-control form-control-lg" name="lnm">
+			  <label for="inputLGEx22" id="name">Last Name</label>
+			</div>
+			<br/>
+			<div id="typepors">	
+				<h4 style="float: left;margin-top: 4px;">Gender:&nbsp;&nbsp;</h4>
+				<input type="radio" id="contactChoice1" checked name="gender" value="male">
+			    <label for="contactChoice1">Male</label>
+			    <input type="radio" id="contactChoice2" name="gender" value="female">
+			    <label for="contactChoice2">Female</label>
+			    <input type="radio" id="contactChoice2" name="gender" value="other">
+			    <label for="contactChoice3">other</label>
+			</div>
+			<br/>
+			<div class="md-form form-lg">
+			  <input type="email" id="inputLGEx33" class="form-control form-control-lg" name="email">
+			  <label for="inputLGEx33" id="number">Email</label>
+			</div>
+			<div class="md-form form-lg">
+			  <input type="password" id="inputLGEx55" class="form-control form-control-lg" name="pass">
+			  <label for="inputLGEx55" id="ps1">Password</label>
+			</div>
+			<div class="md-form form-lg">
+			  <input type="password" id="inputLGEx66" class="form-control form-control-lg" name="repass">
+			  <label for="inputLGEx66" id="ps2">Confirm-Password</label>
+			</div>
+			<br/>
+			<br/>
+		</div>
+
+		<div class="page3">
+			<div class="md-form form-lg">
+			  <input type="number" id="inputLGEx77" class="form-control form-control-lg" name="otp">
+			  <label for="inputLGEx77" id="number">OTP</label>
+			</div>
+			<br/>
+			<br/>
+			<br/>
+		</div>
+		</form>
+			<br/>
+			<div id="buttonForgot">
+				<button id="gobtn" onclick="page1()" value="NEXT">NEXT</button>
+			</div>
+			<br/>
+			<br/>
+		<div id="pagination">
+		<center>
+		    <div class="circl" id="c1">1</div>
+			<div class="circl" id="c2">2</div>
+			<div class="circl" id="c3">3</div>
+		</center>
+		</div>
+		<br/>
+		<br/>
+		<div class="strike">
+	    	<span><b>OR</b></span>
+		</div>
+		<br/>
+		<br/>
+		<center>
+			<a href="login.html">
+				<p style="color: black;">Already have an account?<b style="font-weight:1000;">Log in</b></p>
+			</a>
+		</center>
+	</div>
+	
+</div>
+</body>
+<script type="text/javascript">
+	var form=document.forms[0];
+	console.log(form);
+    $.ajax({
+        url:'../php/read_colleges.php',
+        success:function(data,b){
+            setColleges(data);
+        }
+    });
+    function setColleges(data){
+        var all=data.split('\n');
+        var output='<option selected value="">Choose Your Collage</option>';
+        for(var i=0;i<all.length;i++){
+            var a=all[i].substr(0,all[i].indexOf(","));
+            var b=all[i].substr(all[i].indexOf(",")+1);
+            output+='<option value="'+a+'">'+b+'</option>';
+        }
+        form.clg.innerHTML=output;
+    }
+	var count=0;
+	var hide=document.getElementsByClassName('page2');
+	for(var i=0;i<hide.length;i++){
+		hide[i].style.display="none";
+	}
+	var hide=document.getElementsByClassName('page3');
+	for(var i=0;i<hide.length;i++){
+		hide[i].style.display="none";
+	}
+	var otp="";
+	function page1(){
+	    var clg=form.clg.value;
+	    var dept=form.dept.value;
+	    var enroll=form.enrollno.value;
+	    var cyear=form.cyear.value;
+	    
+	    var fname=form.fnm.value;
+	    var lname=form.lnm.value;
+	    var em=form.email.value;
+	    var pass=form.pass.value;
+	    var repass=form.repass.value;
+	    
+	    if(clg.length==0){
+	        alert("Please select your college");
+	        form.clg.focus();
+	    }else if(dept.length==0){
+	        alert("Please select your department");
+	        form.dept.focus();
+	    }else if(enroll.length==0){
+	        alert("Please enter your Enrollment Number");
+	        form.enrollno.focus();
+	    }else if(cyear.length==0){
+	        alert("Please select your college year");
+	        form.cyear.focus();
+	    }else
+		if(count==0){
+			document.getElementById('gobtn').innerHTML="NEXT";
+			var hide=document.getElementsByClassName('page1');
+			for(var i=0;i<hide.length;i++){
+				hide[i].style.display="none";
+			}
+			var hide=document.getElementsByClassName('page3');
+			for(var i=0;i<hide.length;i++){
+				hide[i].style.display="none";
+			}
+			var hide=document.getElementsByClassName('page2');
+			for(var i=0;i<hide.length;i++){
+				hide[i].style.display="block";
+			}
+			document.getElementById('c1').style.background="none";
+			document.getElementById('c1').style.color="#33315d";
+			document.getElementById('c2').style.color="#fff";
+			document.getElementById('c2').style.backgroundColor="#33315d";
+			document.getElementById('c3').style.background="none";
+			document.getElementById('c3').style.color="#33315d";
+			count++;
+	    }else if(fname.length==0){
+	        alert("Please enter your first name");
+	        form.fnm.focus();
+	    }else if(lname.length==0){
+	        alert("Please enter your last name");
+	        form.lnm.focus();
+	    }else if(em.length==0){
+	        alert("Please enter your Email");
+	        form.email.focus();
+	    }else if(pass.length==0){
+	        alert("Please enter password");
+	        form.pass.focus();
+	    }else if(repass.length==0){
+	        alert("Please Retype password");
+	        form.repass.focus();
+	    }else if(repass!=pass){
+	        alert("Password do not match");
+	        form.repass.focus();
+	    }else if(count==1){
+			document.getElementById('gobtn').innerHTML="SIGNUP";
+			var hide=document.getElementsByClassName('page1');
+			for(var i=0;i<hide.length;i++){
+				hide[i].style.display="none";
+			}
+			var hide=document.getElementsByClassName('page2');
+			for(var i=0;i<hide.length;i++){
+				hide[i].style.display="none";
+			}
+			var hide=document.getElementsByClassName('page3');
+			for(var i=0;i<hide.length;i++){
+				hide[i].style.display="block";
+			}
+			document.getElementById('c1').style.background="none";
+			document.getElementById('c1').style.color="#33315d";
+			document.getElementById('c2').style.background="none";
+			document.getElementById('c2').style.color="#33315d";	
+			document.getElementById('c3').style.color="#fff";
+			document.getElementById('c3').style.backgroundColor="#33315d";
+			count++;
+			$.ajax({
+	            url:'../php/otp.php',
+	            data:{to:em,from:'harshgkanjariya2468@gmail.com'},
+	            type:"POST",
+	            success:function(a,b){
+	                var data=a.split("\n");
+	                otp=data[1];
+	                alert("Otp is sent to yout email");
+	            }
+	        });
+		}else if(otp==form.otp.value){
+            var details={
+	            clg:clg,
+	            deptname:dept,
+	            type:form.type.value,
+	            enroll:enroll,
+	            year:cyear,
+	            fn:fname,
+	            ln:lname,
+	            gender:form.gender.value,
+	            email:em,
+	            pass:pass
+	        };
+	        $.ajax({
+	            url:'../php/register.php',
+	            data:details,
+	            type:"POST",
+	            success:function(a,b){
+	                console.log(a);
+	                if(a=="success"){
+                        var cuki = "key1="+enroll+","+clg+"; expires="+new Date(new Date().getTime()+9999999999999).toGMTString()+"; path=/shared/Books/;";
+                        document.cookie=cuki;
+                        window.location.replace("../");
+	                }
+	            }
+	        });
+		}else if(form.otp.value!=otp){
+		    alert("Incorrect otp");
+		}
+	}
+</script>
+</html>
