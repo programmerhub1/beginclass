@@ -16,19 +16,28 @@ if($type=='users')
 $result=mysqli_query($db,$sql);
 if(mysqli_num_rows($result)==1){
     if($type=="admin"){
-    	$_SESSION['who']='admin';
-    	echo "success".",../admin/";
+        $_SESSION['who']='admin';
+        $_SESSION['clg']=$clg;
+    	$_SESSION['uid']=$id;
+        echo "success".",../admin/";
+
     }
     if($type=="hod"){
     	$_SESSION['who']='hod';
+        $_SESSION['clg']=$clg;
+        $_SESSION['uid']=$id;
     	echo "success".",../admin/";
     }
     if($type=="teacher"){
     	$_SESSION['who']='teacher';
+        $_SESSION['clg']=$clg;
+        $_SESSION['uid']=$id;
     	echo "success".",../admin/";
     }
      if($type=="student"){
     	$_SESSION['who']='student';
+        $_SESSION['clg']=$clg;
+        $_SESSION['uid']=$id;
     	echo "success".",../";
     }
 }else if(mysqli_num_rows($result)==0)

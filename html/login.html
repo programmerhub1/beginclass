@@ -353,8 +353,6 @@ var form=document.forms[0];
          	a=a.split(",");
          	alert(a[0]);
                 if(a[0]=="success"){
-                    var cuki = "key1="+form.em.value+","+form.clg.value+","+form.type.value+"; expires="+new Date(new Date().getTime()+9999999999999).toGMTString()+";";
-                    document.cookie=cuki;
                     window.location.replace(a[1]);
                 }else
                 alert(a);

@@ -352,6 +352,15 @@
 			<h4 id="rightptag">Enter Your Collage Details :</h4>
 			<br/>
 			<br/>
+			<select class="custom-select my-1 mr-sm-2 user_type">
+				<option>- Select Role-</option>
+				<option value="student">Student</option>
+				<option value="faculty">Faculty</option>
+				<option value="hod">Hod</option>
+				<option value="admin">Admin</option>
+			</select>
+			<br/>
+			<br/>
 			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="clg"></select>
 			<br/>
 			<br/>	
@@ -362,21 +371,12 @@
 			    <option>Mechanical Engineering</option>
 			</select>
 			<br/>
-			<br/>
-			<div id="typepors">	
-			<h5 style="float: left; margin-top: 4px;">Type:&nbsp;&nbsp;</h5>
-				<input type="radio" checked id="contactChoice1" name="type" value="student">
-			    <label for="contactChoice1">Student</label>
-			    <input type="radio" id="contactChoice2" name="type" value="professor">
-			    <label for="contactChoice2">Professor</label>
-			</div>
-			<br/>
-			<div class="md-form form-lg">
+			<div class="md-form form-lg student_detail">
 			  <input type="text" id="inputLGEx1" class="form-control form-control-lg" name="enrollno">
 			  <label for="inputLGEx1" id="enroll">Enrollment&nbsp;No.</label>
 			</div>
 			<br/>
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="cyear">
+			<select class="custom-select my-1 mr-sm-2 student_detail" id="inlineFormCustomSelectPref" name="cyear">
 			    <option selected value="">Collage Current Year</option>
 			    <option value="1">1</option>
 			    <option value="2">2</option>
@@ -400,7 +400,7 @@
 			  <label for="inputLGEx22" id="name">Last Name</label>
 			</div>
 			<br/>
-			<div id="typepors">	
+			<div id="typepors" class="student_detail">	
 				<h4 style="float: left;margin-top: 4px;">Gender:&nbsp;&nbsp;</h4>
 				<input type="radio" id="contactChoice1" checked name="gender" value="male">
 			    <label for="contactChoice1">Male</label>
@@ -466,6 +466,17 @@
 </div>
 </body>
 <script type="text/javascript">
+	$(document).ready(function(){
+		$('.user_type').change(function(){
+			$user_type = $('.user_type').val();
+			if($user_type == 'admin' || $user_type == 'hod' ||$user_type == 'faculty'){
+				$('.student_detail').hide();
+			}
+			else{
+ 				$('.student_detail').show();
+			}
+		});
+	});
 	var form=document.forms[0];
 	console.log(form);
     $.ajax({
@@ -505,17 +516,17 @@
 	    var em=form.email.value;
 	    var pass=form.pass.value;
 	    var repass=form.repass.value;
-	    
+	    $user_type = $('.user_type').val();
 	    if(clg.length==0){
 	        alert("Please select your college");
 	        form.clg.focus();
 	    }else if(dept.length==0){
 	        alert("Please select your department");
 	        form.dept.focus();
-	    }else if(enroll.length==0){
+	    }else if($user_type=='student' && enroll.length==0){
 	        alert("Please enter your Enrollment Number");
 	        form.enrollno.focus();
-	    }else if(cyear.length==0){
+	    }else if($user_type=='student' && cyear.length==0){
 	        alert("Please select your college year");
 	        form.cyear.focus();
 	    }else
