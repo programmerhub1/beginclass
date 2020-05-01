@@ -15,6 +15,8 @@ $subject  = "otp";
 $txt  = "Your otp is : ".$otp;
 $From = $_POST['from'];
 $headers = "From: ".$From. "\r\n";
-mail($to,$subject,$txt,$headers);
-echo "success\n".$otp;
+if(mail($to,$subject,$txt,$headers)){
+	echo "success\n".$otp;
+}
+
 ?>

@@ -352,11 +352,9 @@
 			<h4 id="rightptag">Enter Your Collage Details :</h4>
 			<br/>
 			<br/>
-			<select class="custom-select my-1 mr-sm-2 user_type">
+			<select class="custom-select my-1 mr-sm-2 user_type" id="user_val" name="user_val">
 				<option>- Select Role-</option>
 				<option value="student">Student</option>
-				<option value="faculty">Faculty</option>
-				<option value="hod">Hod</option>
 				<option value="admin">Admin</option>
 			</select>
 			<br/>
@@ -364,7 +362,7 @@
 			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="clg"></select>
 			<br/>
 			<br/>	
-			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="dept">
+			<select class="custom-select my-1 mr-sm-2 student_detail" id="inlineFormCustomSelectPref" name="dept">
 			    <option selected value="">Choose Your Department Name</option>
 			    <option>Computer Engineering</option>
 			    <option>Civil Engineering</option>
@@ -399,6 +397,7 @@
 			  <input type="text" id="inputLGEx22" class="form-control form-control-lg" name="lnm">
 			  <label for="inputLGEx22" id="name">Last Name</label>
 			</div>
+
 			<br/>
 			<div id="typepors" class="student_detail">	
 				<h4 style="float: left;margin-top: 4px;">Gender:&nbsp;&nbsp;</h4>
@@ -411,8 +410,21 @@
 			</div>
 			<br/>
 			<div class="md-form form-lg">
-			  <input type="email" id="inputLGEx33" class="form-control form-control-lg" name="email">
+			  <input type="email" id="inputLGEx33" class="form-control form-control-lg " name="email">
 			  <label for="inputLGEx33" id="number">Email</label>
+			</div>
+			<div class="md-form form-lg">
+			  <input type="number" id="inputLGEx77" class="form-control form-control-lg contact-validate" name="usr_contact">
+			  <label for="inputLGEx77" id="usr_contact">contact no.</label>
+			  <div class="validate_user"></div>
+			</div>
+			<div class="md-form form-lg student_detail">
+			  <input type="number" id="inputLGEx88" class="form-control form-control-lg " name="parent_contact">
+			  <label for="inputLGEx88" id="parent_contact">father contact</label>
+			</div>
+			<div class="md-form form-lg student_detail">
+			  <input type="email" id="inputLGEx99" class="form-control form-control-lg" name="parent_email">
+			  <label for="inputLGEx99" id="parent_email">father email</label>
 			</div>
 			<div class="md-form form-lg">
 			  <input type="password" id="inputLGEx55" class="form-control form-control-lg" name="pass">
@@ -426,7 +438,7 @@
 			<br/>
 		</div>
 
-		<div class="page3">
+<!-- 		<div class="page3">
 			<div class="md-form form-lg">
 			  <input type="number" id="inputLGEx77" class="form-control form-control-lg" name="otp">
 			  <label for="inputLGEx77" id="number">OTP</label>
@@ -434,7 +446,7 @@
 			<br/>
 			<br/>
 			<br/>
-		</div>
+		</div> -->
 		</form>
 			<br/>
 			<div id="buttonForgot">
@@ -469,14 +481,35 @@
 	$(document).ready(function(){
 		$('.user_type').change(function(){
 			$user_type = $('.user_type').val();
-			if($user_type == 'admin' || $user_type == 'hod' ||$user_type == 'faculty'){
+			if($user_type == 'admin'){
 				$('.student_detail').hide();
 			}
 			else{
  				$('.student_detail').show();
 			}
 		});
+		$('.contact-validate').keyup(function(){
+			var contact_validate = true;
+			var usr_contact = $('.contact-validate').val();
+			var user_type = form.user_val.value;
+		  $.ajax({
+	         url:'../php/ajax.php',
+	         type:'post',
+	         data:{contact_validate:contact_validate,usr_contact:usr_contact,user_type:user_type},
+	          success:function(data,b){
+	          	if(data == "valid"){
+	               $('.validate_user').html('<font color="green"> Available </font>');
+	          	}
+    			else if(data == "invalid"){
+    				$('.validate_user').html('<font color="red"> Not Available </font>');
+    			}
+    			else{
+    				alert(data);
+    			}
+	          }
+		});
 	});
+    });
 	var form=document.forms[0];
 	console.log(form);
     $.ajax({
@@ -510,17 +543,21 @@
 	    var dept=form.dept.value;
 	    var enroll=form.enrollno.value;
 	    var cyear=form.cyear.value;
-	    
+	    var user_type = form.user_val.value;
 	    var fname=form.fnm.value;
 	    var lname=form.lnm.value;
 	    var em=form.email.value;
+	    var usr_contact = form.usr_contact.value;
+	    var parent_contact = form.parent_contact.value;
+	    var parent_email = form.parent_email.value;
 	    var pass=form.pass.value;
 	    var repass=form.repass.value;
+	    var otp = "0";
 	    $user_type = $('.user_type').val();
 	    if(clg.length==0){
 	        alert("Please select your college");
 	        form.clg.focus();
-	    }else if(dept.length==0){
+	    }else if($user_type=='student' && dept.length==0){
 	        alert("Please select your department");
 	        form.dept.focus();
 	    }else if($user_type=='student' && enroll.length==0){
@@ -590,28 +627,32 @@
 			document.getElementById('c3').style.color="#fff";
 			document.getElementById('c3').style.backgroundColor="#33315d";
 			count++;
-			$.ajax({
-	            url:'../php/otp.php',
-	            data:{to:em,from:'harshgkanjariya2468@gmail.com'},
-	            type:"POST",
-	            success:function(a,b){
-	                var data=a.split("\n");
-	                otp=data[1];
-	                alert("Otp is sent to yout email");
-	            }
-	        });
-		}else if(otp==form.otp.value){
+			// $.ajax({
+	  //           url:'../php/otp.php',
+	  //           data:{to:em,from:'harshgkanjariya2468@gmail.com'},
+	  //           type:"POST",
+	  //           success:function(a,b){
+	  //               var data=a.split("\n");
+	  //               otp=data[1];
+	  //               alert("Otp is sent to yout email");
+	  //           }
+	  //       });
+		}else if(otp == "0"){
             var details={
 	            clg:clg,
 	            deptname:dept,
-	            type:form.type.value,
 	            enroll:enroll,
+	            user_type:user_type,
 	            year:cyear,
 	            fn:fname,
 	            ln:lname,
 	            gender:form.gender.value,
 	            email:em,
-	            pass:pass
+	            pass:pass,
+	            usr_contact:usr_contact,
+	            parent_contact:parent_contact,
+	            parent_email:parent_email
+
 	        };
 	        $.ajax({
 	            url:'../php/register.php',
@@ -622,7 +663,10 @@
 	                if(a=="success"){
                         var cuki = "key1="+enroll+","+clg+"; expires="+new Date(new Date().getTime()+9999999999999).toGMTString()+"; path=/shared/Books/;";
                         document.cookie=cuki;
-                        window.location.replace("../");
+                        alert("registered");
+                        window.location.replace("login.html");
+	                }else if(a == "duplicate"){
+	                	alert("phone number already registered");
 	                }
 	            }
 	        });
